@@ -120,6 +120,69 @@
             box-shadow: 0 20px 40px rgba(0, 136, 204, 0.5);
         }
 
+        /* Sección Disfruta de películas como... */
+        .featured-section {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .featured-title {
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .movie-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+
+        .movie-card img {
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .movie-info {
+            padding: 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            background: rgba(0,0,0,0.7);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .and-much-more {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         /* Sección de Información de Subida */
         .info-grid {
             display: grid;
@@ -202,6 +265,7 @@
 
         @media (max-width: 768px) {
             .backup-banner { flex-direction: column; text-align: center; padding: 25px; }
+            .movie-showcase { grid-template-columns: repeat(2, 1fr); }
             h1 { font-size: 2.2rem; }
         }
     </style>
@@ -228,6 +292,38 @@
                 UNIRME AL CANAL
             </a>
             <div style="margin-top: 15px; font-weight: bold; color: var(--primary);">@cineplaymax</div>
+        </section>
+
+        <!-- Sección de Películas Destacadas -->
+        <section class="featured-section">
+            <h2 class="featured-title">Disfruta de películas como...</h2>
+            <div class="movie-showcase">
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/nlAi9cw2uLZ9hHwhzCMOG6TZMHc.jpg" alt="Resident Evil">
+                    <div class="movie-info">Resident Evil</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/yHg1JMq3W3cK7NjLKHRPCz2BQWD.jpg" alt="Tracers">
+                    <div class="movie-info">Tracers</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/2GtDmIdxkJ5NZG97yhJQtM8Wn1H.jpg" alt="La Red Social">
+                    <div class="movie-info">La Red Social</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/t5T3LPbLLgP2OP6kloM9p2PXpJL.jpg" alt="Avatar">
+                    <div class="movie-info">Avatar</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/yPuk6hM7xfR2PW6dxu3a1i8SrRm.jpg" alt="Actividad Paranormal">
+                    <div class="movie-info">Paranormal: Los Marcados</div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://image.tmdb.org/t/p/original/dyYP52hnVzioCxLSheogZBX0vXv.jpg" alt="Kick Ass">
+                    <div class="movie-info">Kick-Ass</div>
+                </div>
+            </div>
+            <div class="and-much-more">¡Y MUCHO MÁS!</div>
         </section>
 
         <!-- Información de Subida -->
