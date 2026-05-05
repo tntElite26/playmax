@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAY+ Cinema | Películas Gratis</title>
+    <style>
+        /* Estilos críticos integrados para carga instantánea */
+        :root {
+            --primary: #0088cc;
+            --accent: #00d4ff;
+            --bg: #0a0b10;
+            --card-bg: #161b22;
+            --text: #ffffff;
+            --text-dim: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Diseño de fondo */
+        .glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 136, 204, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        header {
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .description {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Botón Telegram */
+        .btn-tg {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-tg:active {
+            transform: scale(0.95);
+        }
+
+        .btn-tg svg {
+            margin-right: 12px;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Grid de beneficios */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: left;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .logo { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">PLAY<span>+</span> CINEMA</div>
+        </header>
+
+        <section class="hero">
+            <div class="badge">Disponible en Telegram</div>
+            <h1>Películas Gratis <br>En Español Latino</h1>
+            <p class="description">
+                Únete a nuestra comunidad y disfruta de los últimos estrenos del cine en alta definición directamente en tu celular o PC.
+            </p>
+            
+            <a href="https://t.me/cineplaymax" class="btn-tg">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.15-5.11 5.11-7.85 7.85-.27.27-.67.27-.94 0l-2.43-2.43c-.27-.27-.27-.67 0-.94.27-.27.67-.27.94 0l1.96 1.96 7.38-7.38c.27-.27.67-.27.94 0 .27.27.27.67 0 .94z"/>
+                </svg>
+                ENTRAR AL CANAL
+            </a>
+        </section>
+
+        <div class="features">
+            <div class="card">
+                <div class="badge">Calidad HD</div>
+                <h3>Estrenos Diarios</h3>
+                <p>Subimos contenido nuevo cada pocas horas. No te pierdas ninguna tendencia del cine mundial.</p>
+            </div>
+            <div class="card">
+                <div class="badge">Gratis</div>
+                <h3>Sin Suscripciones</h3>
+                <p>Todo el contenido es compartido de forma libre. Olvídate de pagos mensuales o registros.</p>
+            </div>
+            <div class="card">
+                <div class="badge">Seguro</div>
+                <h3>Links Directos</h3>
+                <p>Sin publicidad engañosa ni virus. Disfruta de una navegación limpia y rápida en Telegram.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>@cineplaymax - PLAY+ Cinema 2024</p>
+            <p style="margin-top: 10px;">Tu cine de confianza en Telegram</p>
+        </footer>
+    </div>
+</body>
+</html>
