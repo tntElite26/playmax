@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PLAY+ Cinema | Películas Gratis</title>
     <style>
-        /* Estilos críticos integrados para carga instantánea */
         :root {
             --primary: #0088cc;
             --accent: #00d4ff;
@@ -13,6 +13,7 @@
             --card-bg: #161b22;
             --text: #ffffff;
             --text-dim: #8b949e;
+            --success: #00c853;
         }
 
         * {
@@ -35,7 +36,6 @@
             padding: 20px;
         }
 
-        /* Diseño de fondo */
         .glow {
             position: fixed;
             top: 0;
@@ -43,20 +43,19 @@
             transform: translateX(-50%);
             width: 100%;
             height: 400px;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 136, 204, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 0%, rgba(0, 136, 204, 0.2) 0%, transparent 70%);
             z-index: -1;
         }
 
         header {
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
             letter-spacing: -1px;
-            margin-bottom: 10px;
         }
 
         .logo span {
@@ -65,19 +64,20 @@
 
         .hero {
             text-align: center;
-            padding: 40px 0 60px;
+            padding: 20px 0 60px;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
-            line-height: 1.2;
+            line-height: 1.1;
+            font-weight: 900;
         }
 
         .description {
             color: var(--text-dim);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.15rem;
+            max-width: 650px;
             margin: 0 auto 40px;
         }
 
@@ -87,75 +87,112 @@
             align-items: center;
             background: var(--primary);
             color: white;
-            padding: 18px 35px;
-            border-radius: 50px;
+            padding: 20px 40px;
+            border-radius: 16px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 900;
+            font-size: 1.3rem;
+            box-shadow: 0 15px 30px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .btn-tg:active {
-            transform: scale(0.95);
+        .btn-tg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 136, 204, 0.5);
         }
 
         .btn-tg svg {
-            margin-right: 12px;
-            width: 24px;
-            height: 24px;
+            margin-right: 15px;
+            width: 28px;
+            height: 28px;
         }
 
-        /* Grid de beneficios */
-        .features {
+        /* Métodos de Entrega */
+        .delivery-methods {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-top: 50px;
+            margin: 40px 0;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+        .method-card {
+            background: linear-gradient(145deg, #1c2128, #161b22);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
             text-align: left;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card h3 {
-            margin-bottom: 10px;
+        .method-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .method-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-circle {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 136, 204, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
             color: var(--accent);
         }
 
-        .card p {
+        .method-card p {
             color: var(--text-dim);
             font-size: 0.95rem;
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+        .badge-info {
+            background: rgba(0, 200, 83, 0.1);
+            color: var(--success);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: bold;
-            margin-bottom: 15px;
             text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
         }
 
+        /* Footer */
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 40px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             text-align: center;
             color: var(--text-dim);
-            font-size: 0.8rem;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .logo { font-size: 1.5rem; }
+        .username {
+            color: var(--primary);
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .delivery-methods { grid-template-columns: 1fr; }
+            h1 { font-size: 2.2rem; }
+            .method-card { padding: 20px; }
         }
     </style>
 </head>
@@ -168,42 +205,46 @@
         </header>
 
         <section class="hero">
-            <div class="badge">Disponible en Telegram</div>
-            <h1>Películas Gratis <br>En Español Latino</h1>
+            <h1>Cine Premium <br>Gratis en Telegram</h1>
             <p class="description">
-                Únete a nuestra comunidad y disfruta de los últimos estrenos del cine en alta definición directamente en tu celular o PC.
+                Subimos contenido diariamente con la mejor calidad y sin publicidad invasiva. La experiencia de streaming más rápida del mercado.
             </p>
             
             <a href="https://t.me/cineplaymax" class="btn-tg">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15.15-5.11 5.11-7.85 7.85-.27.27-.67.27-.94 0l-2.43-2.43c-.27-.27-.27-.67 0-.94.27-.27.67-.27.94 0l1.96 1.96 7.38-7.38c.27-.27.67-.27.94 0 .27.27.27.67 0 .94z"/>
                 </svg>
-                ENTRAR AL CANAL
+                UNIRME AHORA
             </a>
+            <span class="username">@cineplaymax</span>
         </section>
 
-        <div class="features">
-            <div class="card">
-                <div class="badge">Calidad HD</div>
-                <h3>Estrenos Diarios</h3>
-                <p>Subimos contenido nuevo cada pocas horas. No te pierdas ninguna tendencia del cine mundial.</p>
+        <!-- Sección de Métodos de Subida -->
+        <div class="delivery-methods">
+            <div class="method-card">
+                <div class="badge-info">Directo</div>
+                <h3><span class="icon-circle">↓</span> Archivos en Telegram</h3>
+                <p>Todas las películas de tamaño estándar las subimos directamente al canal para que las veas o descargues sin salir de la app.</p>
             </div>
-            <div class="card">
-                <div class="badge">Gratis</div>
-                <h3>Sin Suscripciones</h3>
-                <p>Todo el contenido es compartido de forma libre. Olvídate de pagos mensuales o registros.</p>
-            </div>
-            <div class="card">
-                <div class="badge">Seguro</div>
-                <h3>Links Directos</h3>
-                <p>Sin publicidad engañosa ni virus. Disfruta de una navegación limpia y rápida en Telegram.</p>
+            
+            <div class="method-card" style="border-left-color: var(--accent);">
+                <div class="badge-info" style="background: rgba(0, 212, 255, 0.1); color: var(--accent);">Alta Calidad</div>
+                <h3><span class="icon-circle">⚡</span> Formato +2GB</h3>
+                <p>Para archivos pesados de ultra alta calidad, compartimos enlaces de streaming externos directos de alta velocidad y sin publicidad.</p>
             </div>
         </div>
 
+        <div style="background: rgba(0, 136, 204, 0.05); padding: 30px; border-radius: 20px; text-align: center; border: 1px dashed rgba(0, 136, 204, 0.3);">
+            <h4 style="margin-bottom: 10px;">¡Todo el contenido disponible 24/7!</h4>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Únete y forma parte de la comunidad más grande de amantes del cine en Telegram.</p>
+        </div>
+
         <footer>
-            <p>@cineplaymax - PLAY+ Cinema 2024</p>
-            <p style="margin-top: 10px;">Tu cine de confianza en Telegram</p>
+            <p>PLAY+ CINEMA &copy; 2024</p>
+            <p style="font-size: 0.7rem; margin-top: 10px; opacity: 0.5;">Diseño profesional para @cineplaymax</p>
         </footer>
     </div>
 </body>
 </html>
+
+```
