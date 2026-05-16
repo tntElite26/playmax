@@ -15,7 +15,6 @@
             --text-main: #ffffff;
             --text-muted: #8e9bb0;
             --success: #00ff88;
-            --warning: #ffaa00;
         }
 
         * {
@@ -35,7 +34,7 @@
             position: relative;
         }
 
-        /* Efecto de iluminación ambiental de fondo para simular profundidad */
+        /* Efecto de iluminación ambiental de fondo para simular profundidad cinematográfica */
         .ambient-glow {
             position: absolute;
             top: 0;
@@ -43,8 +42,8 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 1400px;
-            height: 600px;
-            background: radial-gradient(circle at 50% 15%, rgba(157, 78, 221, 0.2) 0%, rgba(0, 240, 255, 0.05) 50%, transparent 80%);
+            height: 700px;
+            background: radial-gradient(circle at 50% 15%, rgba(157, 78, 221, 0.22) 0%, rgba(0, 240, 255, 0.06) 50%, transparent 80%);
             z-index: 1;
             pointer-events: none;
         }
@@ -85,10 +84,16 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .badge-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
         .badge {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(255, 0, 127, 0.1);
+            color: var(--accent-pink);
+            border: 1px solid rgba(255, 0, 127, 0.2);
             font-size: 0.75rem;
             padding: 4px 10px;
             border-radius: 20px;
@@ -119,9 +124,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 0, 127, 0.12);
-            color: #fca5a5;
-            border: 1px solid rgba(255, 0, 127, 0.25);
+            background: rgba(157, 78, 221, 0.12);
+            color: #d8b4fe;
+            border: 1px solid rgba(157, 78, 221, 0.25);
             padding: 8px 16px;
             border-radius: 30px;
             font-size: 0.85rem;
@@ -132,10 +137,10 @@
         .pulse-dot {
             width: 8px;
             height: 8px;
-            background-color: var(--accent-pink);
+            background-color: var(--success);
             border-radius: 50%;
             display: inline-block;
-            box-shadow: 0 0 10px var(--accent-pink);
+            box-shadow: 0 0 10px var(--success);
             animation: pulse 1.6s infinite;
         }
 
@@ -161,25 +166,30 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             line-height: 1.6;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
-        /* Botón de Redirección Principal a GemSpace */
+        /* Contenedor del Botón de Acción Único del Héroe */
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
         .btn-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--accent-purple) 0%, #6200ea 100%);
             color: #ffffff;
             text-decoration: none;
             padding: 20px 45px;
             border-radius: 20px;
             font-weight: 800;
-            font-size: 1.3rem;
-            box-shadow: 0 12px 30px rgba(157, 78, 221, 0.4);
+            font-size: 1.25rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
@@ -187,9 +197,15 @@
             max-width: 480px;
         }
 
-        .btn-cta:hover {
+        /* Botón PlayMax Principal - Púrpura */
+        .btn-playmax {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #6200ea 100%);
+            box-shadow: 0 12px 30px rgba(157, 78, 221, 0.35);
+        }
+
+        .btn-playmax:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(157, 78, 221, 0.6);
+            box-shadow: 0 15px 35px rgba(157, 78, 221, 0.55);
             filter: brightness(1.1);
         }
 
@@ -199,8 +215,8 @@
 
         .btn-cta svg {
             fill: #ffffff;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
         }
 
         /* Dashboard de Servidores de Alta Velocidad */
@@ -295,12 +311,85 @@
             color: #ffffff;
         }
 
+        /* Tarjeta de Canal Aliado PlayPlus (Completamente separado y abajo) */
+        .allied-banner {
+            background: linear-gradient(135deg, rgba(14, 17, 29, 0.8) 0%, rgba(20, 10, 35, 0.8) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 24px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 35px rgba(0, 240, 255, 0.05);
+        }
+
+        .allied-info h2 {
+            font-size: 1.4rem;
+            font-weight: 850;
+            color: var(--accent-cyan);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .allied-info h2 .allied-badge {
+            font-size: 0.7rem;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            padding: 3px 8px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .allied-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 620px;
+        }
+
+        /* Botón PlayPlus - Cian */
+        .btn-playplus {
+            background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+            box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-playplus:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 180, 216, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-playplus svg {
+            fill: currentColor;
+            width: 18px;
+            height: 18px;
+        }
+
         /* Sección de Características */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            margin-top: 50px;
+            margin-top: 40px;
             margin-bottom: 30px;
         }
 
@@ -378,8 +467,17 @@
                 margin-bottom: 35px;
             }
             .btn-cta {
-                padding: 18px 30px;
-                font-size: 1.15rem;
+                padding: 18px 24px;
+                font-size: 1.1rem;
+            }
+            .allied-banner {
+                padding: 24px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-playplus {
+                width: 100%;
+                justify-content: center;
             }
             .dashboard {
                 padding: 20px;
@@ -402,23 +500,28 @@
             <a href="#" class="logo">
                 <span>PLAYMAX</span>
             </a>
-            <span class="badge" style="background: rgba(255, 0, 127, 0.1); color: var(--accent-pink); border-color: rgba(255, 0, 127, 0.2);">ANTI-DMCA</span>
+            <div class="badge-group">
+                <span class="badge">ANTI-DMCA</span>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Héroe con botón principal de alta conversión -->
+        <!-- Héroe principal con enfoque absoluto en PlayMax -->
         <section class="hero">
             <div class="hero-badge-container">
-                <span class="pulse-dot"></span> Canal permanente y protegido
+                <span class="pulse-dot"></span> Red de Canales Segura e Inmune
             </div>
-            <h1>Catálogo libre de caídas en <br><span>GemSpace</span></h1>
-            <p>Nos hemos mudado oficialmente porque <strong>Telegram elimina canales constantemente debido a los estrictos reclamos de DMCA/Copyright</strong>. En cambio, <strong>GemSpace ignora estos reclamos de derechos de autor</strong>, garantizando que todos nuestros enlaces, películas y series estén en línea de forma permanente, segura y sin interrupciones.</p>
+            <h1>Películas y Series Libres de Caídas en <span>GemSpace</span></h1>
+            <p>Hemos migrado oficialmente nuestra red de entretenimiento porque <strong>Telegram borra archivos y banea canales enteros sin previo aviso por reclamos de copyright (DMCA)</strong>. En cambio, <strong>GemSpace no cede a estos reclamos</strong>, lo que nos permite ofrecerte un catálogo permanente, seguro, veloz y sin caídas.</p>
             
-            <a href="https://links.gemspace.com/join/playmax" target="_blank" class="btn-cta">
-                <svg viewBox="0 0 24 24"><path d="M12 2L2 9l10 7 10-7-10-7zm0 18.5L4.5 15l-1.5 1 9 5 9-5-1.5-1-7.5 5.5z"/></svg>
-                Entrar al Canal de GemSpace
-            </a>
+            <!-- Único Botón de Acción Principal en el Héroe -->
+            <div class="cta-container">
+                <a href="https://links.gemspace.com/join/playmax" target="_blank" class="btn-cta btn-playmax">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 9l10 7 10-7-10-7zm0 18.5L4.5 15l-1.5 1 9 5 9-5-1.5-1-7.5 5.5z"/></svg>
+                    Entrar al Canal de PlayMax
+                </a>
+            </div>
         </section>
 
         <!-- Dashboard del estado de los servidores privados -->
@@ -464,6 +567,18 @@
             </div>
         </section>
 
+        <!-- Tarjeta Informativa de Canal Aliado (Abajo e Independiente) -->
+        <section class="allied-banner">
+            <div class="allied-info">
+                <h2>PlayPlus Cinema <span class="allied-badge">Canal Aliado</span></h2>
+                <p>Nuestra plataforma hermana especializada en transmisiones rápidas, contenido de estreno exclusivo y servidores multimedia dedicados de libre acceso.</p>
+            </div>
+            <a href="https://links.gemspace.com/join/playplus" target="_blank" class="btn-playplus">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                Unirse a PlayPlus
+            </a>
+        </section>
+
         <!-- Secciones de beneficios del canal -->
         <section class="features">
             <div class="feature-card">
@@ -497,8 +612,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 PlayMax. Todos los derechos reservados.</p>
-        <p style="margin-top: 8px;">Conectado oficialmente a la comunidad inmune de <a href="https://links.gemspace.com/join/playmax" target="_blank">GemSpace</a>.</p>
+        <p>&copy; 2026 PlayMax & PlayPlus Network. Todos los derechos reservados.</p>
+        <p style="margin-top: 8px;">Red conectada oficialmente a la comunidad de <a href="https://links.gemspace.com/join/playmax" target="_blank">GemSpace</a>.</p>
     </footer>
 
     <script>
