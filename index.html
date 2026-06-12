@@ -1,259 +1,1119 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargar Play+ 6.0 - App de Películas para Android</title>
-    <!-- Tailwind CSS para diseño fluido y móvil-primero -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons para la interfaz visual -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Play+ | Descargar Aplicación Oficial Gratis</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #050507;
+        /* Variables de diseño premium (Paleta oscura corporativa) */
+        :root {
+            --bg-color: #09090b;
+            --card-bg: #121215;
+            --card-border: #222227;
+            --primary: #ff2a5f;
+            --primary-gradient: linear-gradient(135deg, #ff2a5f 0%, #ff7e40 100%);
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --warning: #f59e0b;
+            --warning-bg: rgba(245, 158, 11, 0.08);
+            --warning-border: rgba(245, 158, 11, 0.25);
+            --success: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.1);
         }
 
-        /* Degradado de fondo para ambientación móvil */
-        .ambient-glow {
+        /* Reset básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Contenedores */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(255, 42, 95, 0.3);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            color: white;
+            background: var(--primary-gradient);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-sm:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
+        }
+
+        /* Sección de Héroe */
+        .hero {
+            position: relative;
+            padding: 60px 0 80px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        /* Luces de ambiente */
+        .glow-1 {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 5%;
+            top: 20%;
             left: 50%;
-            transform: translateX(-50%);
-            z-index: 0;
+            width: 450px;
+            height: 450px;
+            background: rgba(255, 42, 95, 0.08);
+            border-radius: 50%;
+            filter: blur(100px);
             pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 42, 95, 0.1);
+            border: 1px solid rgba(255, 42, 95, 0.2);
+            color: #ff5e84;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 540px;
+        }
+
+        /* Caja de Descarga */
+        .download-box {
+            background: rgba(18, 18, 21, 0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 540px;
+        }
+
+        .download-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .file-info {
+            text-align: left;
+        }
+
+        .file-info .subtitle {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .file-info .title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 4px;
+            color: var(--text-main);
+        }
+
+        .file-info .specs {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 42, 95, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 42, 95, 0.5);
+        }
+
+        /* Estadísticas rápidas */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--card-border);
+            margin-top: 20px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .security-live {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--success);
+            animation: pulse 1.5s infinite;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(2.5); opacity: 0; }
+        }
+
+        /* Panel de Información Técnica Lateral */
+        .info-panel {
+            background: #121215;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-panel h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 12px;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .spec-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .spec-table td {
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .spec-value {
+            text-align: right;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Banner de Aviso de Seguridad Reasentador */
+        .security-notice {
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 10px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .security-notice-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .security-notice-text h4 {
+            color: var(--warning);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .security-notice-text p {
+            font-size: 12.5px;
+            color: #e4e4e7;
+            line-height: 1.4;
+        }
+
+        .trust-checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 20px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .trust-icon {
+            color: var(--success);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Sección Características */
+        .features {
+            background-color: #0d0d11;
+            padding: 80px 0;
+            border-top: 1px solid var(--card-border);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .sec-title {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .sec-title h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .sec-title p {
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 42, 95, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Sección Seguridad */
+        .security-sec {
+            padding: 80px 0;
+        }
+
+        .security-box {
+            background: linear-gradient(135deg, rgba(18, 18, 21, 0.9) 0%, rgba(9, 9, 11, 0.95) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .sec-badge {
+            display: inline-flex;
+            background: var(--warning-bg);
+            color: var(--warning);
+            border: 1px solid var(--warning-border);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .security-box h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .security-box p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .sec-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .sec-tag {
+            background: #18181b;
+            border: 1px solid #27272a;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .cert-card {
+            background: #09090b;
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cert-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .cert-card h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .cert-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .pill-clean {
+            background: var(--success-bg);
+            color: var(--success);
+            padding: 6px 14px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* Guía de Instalación */
+        .guide {
+            background: #0d0d11;
+            padding: 80px 0;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 20px;
+            background: rgba(18, 18, 21, 0.5);
+            border: 1px solid var(--card-border);
+            padding: 24px;
+            border-radius: 16px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .step-text h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .step-text p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .step-text code {
+            background: #18181b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-size: 13px;
+        }
+
+        /* Acordeón FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: rgba(18, 18, 21, 0.4);
+            overflow: hidden;
+        }
+
+        .faq-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 18px 24px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .faq-header:hover {
+            color: var(--primary);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 24px;
+        }
+
+        .faq-body p {
+            padding-bottom: 18px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Banner Final */
+        .banner-final {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #09090b 0%, rgba(255, 42, 95, 0.08) 100%);
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .banner-final-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .banner-final h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .banner-final p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #050507;
+            border-top: 1px solid var(--card-border);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: var(--success-bg);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--success);
+        }
+
+        .footer-text {
+            max-width: 700px;
+            margin: 0 auto 16px;
+        }
+
+        .footer-disc {
+            font-size: 11px;
+            color: #52525b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Adaptabilidad Móvil */
+        @media (max-width: 991px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .download-box {
+                margin: 0 auto;
+            }
+            .info-panel {
+                margin-top: 20px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .security-box {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .download-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .btn-large {
+                width: 100%;
+                justify-content: center;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
-<body class="text-gray-200 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-red-600 selection:text-white">
+<body>
 
-    <!-- Brillo de fondo ambiental -->
-    <div class="ambient-glow"></div>
-
-    <!-- Barra de Navegación Simple -->
-    <header class="relative z-10 border-b border-zinc-900 bg-zinc-950/70 backdrop-blur-md sticky top-0">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-red-500 to-rose-600 bg-clip-text text-transparent">PLAY+</span>
-                <span class="bg-red-500/10 text-red-500 text-[10px] font-bold px-2 py-0.5 rounded-full border border-red-500/20">Android App</span>
+    <!-- Barra de Navegación -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo-area">
+                <div class="logo-box">P+</div>
+                <span class="logo-text">Play<span>+</span></span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#caracteristicas">Beneficios</a>
+                <a href="#seguridad">Seguridad</a>
+                <a href="#instalacion">Cómo Instalar</a>
+                <a href="#faq">Soporte</a>
             </div>
-            <span class="text-[11px] text-zinc-400 flex items-center gap-1 bg-zinc-900 px-2.5 py-1 rounded-full border border-zinc-800">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                v6.0 Estable
-            </span>
+
+            <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-sm">
+                Descargar APK
+            </a>
+        </div>
+    </nav>
+
+    <!-- Héroe Principal / Descarga -->
+    <header class="hero">
+        <div class="glow-1"></div>
+        <div class="container hero-grid">
+            
+            <!-- Contenido del Héroe -->
+            <div class="hero-content">
+                <div class="badge">
+                    <span>📦 Versión Oficial 6.1 — Descarga Directa Segura</span>
+                </div>
+                
+                <h1>Películas y Series Gratis <br><span class="gradient-text">Sin Anuncios Molestos</span></h1>
+                
+                <p class="hero-desc">
+                    Disfruta de todo tu entretenimiento en streaming con Play+. Un reproductor fluido diseñado para brindarte contenido en la más alta resolución posible, sin anuncios intrusivos y totalmente libre de suscripciones de pago.
+                </p>
+
+                <!-- Bloque de Descarga -->
+                <div class="download-box">
+                    <div class="download-flex">
+                        <div class="file-info">
+                            <p class="subtitle">Enlace Directo Oficial</p>
+                            <p class="title">Play+_6.1.apk</p>
+                            <p class="specs">Peso: 18.5 MB | Android 5.0+</p>
+                        </div>
+                        
+                        <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
+                            <!-- Icono Flecha Descarga SVG -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            <span>Descargar APK</span>
+                        </a>
+                    </div>
+
+                    <!-- Métricas -->
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h4>4.8/5</h4>
+                            <p>Valoración</p>
+                        </div>
+                        <div class="stat-item" style="border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border);">
+                            <h4 style="color: var(--success);">Protegido</h4>
+                            <p>Sin Malware</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>+100K</h4>
+                            <p>Instalaciones</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="security-live">
+                    <div class="pulse-dot"></div>
+                    <span>Servidor de descarga activo con ancho de banda ilimitado y conexión cifrada.</span>
+                </div>
+            </div>
+
+            <!-- Ficha Técnica de Confianza -->
+            <div class="info-panel">
+                <h3>Detalles Técnicos del Archivo</h3>
+                
+                <table class="spec-table">
+                    <tr>
+                        <td class="spec-label">Nombre del Archivo</td>
+                        <td class="spec-value">Play+_6.1.apk</td>
+                    </tr>
+                    <tr>
+                        <td class="spec-label">Versión de la App</td>
+                        <td class="spec-value">6.1 (Estable)</td>
+                    </tr>
+                    <tr>
+                        <td class="spec-label">Compatibilidad Mínima</td>
+                        <td class="spec-value">Android 5.0 (Lollipop) o superior</td>
+                    </tr>
+                    <tr>
+                        <td class="spec-label">Tamaño del Archivo</td>
+                        <td class="spec-value">18.5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="spec-label">Costo de la Aplicación</td>
+                        <td class="spec-value" style="color: var(--success);">100% Gratuita</td>
+                    </tr>
+                </table>
+
+                <!-- Aviso Reasentador de Seguridad de Android -->
+                <div class="security-notice">
+                    <div class="security-notice-icon">⚠️</div>
+                    <div class="security-notice-text">
+                        <h4>Aviso del Sistema Android</h4>
+                        <p>Al instalar, Android podría mostrar un mensaje advirtiendo que es un <em>"archivo potencialmente dañino"</em> o de <em>"origen desconocido"</em>. <strong>Esta alerta es totalmente normal</strong> y aparece automáticamente con cualquier app instalada fuera de Google Play Store. Play+ es segura, libre de malware y lista para usarse.</p>
+                    </div>
+                </div>
+
+                <div class="trust-checklist">
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>Firma del instalador nativa y limpia</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>Código optimizado libre de rastreadores</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">✓</span>
+                        <span>No requiere permisos de almacenamiento privado</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="relative z-10 max-w-lg mx-auto px-4 py-10 flex-grow flex flex-col justify-center items-center">
-        
-        <!-- Tarjeta Principal de Descarga -->
-        <div class="w-full bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl space-y-6">
-            
-            <!-- Icono y Título de App -->
-            <div class="text-center space-y-2">
-                <div class="mx-auto w-16 h-16 bg-red-600/10 rounded-2xl flex items-center justify-center border border-red-500/20 shadow-inner">
-                    <i data-lucide="smartphone" class="w-8 h-8 text-red-500"></i>
-                </div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                    Instalar Play+ <span class="bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">v6.0</span>
-                </h1>
-                <p class="text-zinc-400 text-xs sm:text-sm max-w-sm mx-auto leading-relaxed">
-                    Disfruta de películas y series sin interrupciones publicitarias directamente en tu smartphone Android.
-                </p>
+    <!-- Características del Servicio -->
+    <section id="caracteristicas" class="features">
+        <div class="container">
+            <div class="sec-title">
+                <h2>¿Por qué elegir Play+?</h2>
+                <p>Olvídate de las malas experiencias de streaming móvil. Play+ ha sido desarrollado bajo estrictos estándares de calidad para el usuario.</p>
             </div>
 
-            <!-- Caja de Estado Interactivo -->
-            <div id="download-box" class="bg-zinc-950/60 border border-zinc-800/60 rounded-2xl p-5 space-y-4">
-                
-                <!-- ESTADO 1: Listo para descargar -->
-                <div id="status-ready" class="space-y-3">
-                    <button onclick="startAndroidDownload()" class="w-full py-4 px-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold text-base rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-red-600/10 flex items-center justify-center gap-2">
-                        <i data-lucide="download" class="w-5 h-5"></i>
-                        Descargar APK de Play+
+            <div class="features-grid">
+                <!-- Beneficio 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🚫</div>
+                    <h3>Sin Anuncios Intrusivos</h3>
+                    <p>Disfruta de tus contenidos preferidos sin comerciales molestos, banners flotantes ni páginas que se abren solas.</p>
+                </div>
+                <!-- Beneficio 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Catálogo Siempre Al Día</h3>
+                    <p>Accede de inmediato a los últimos lanzamientos de la industria y a temporadas completas con audio latino y castellano.</p>
+                </div>
+                <!-- Beneficio 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Reproducción Instantánea</h3>
+                    <p>Servidores con velocidad optimizada que evitan las molestas detenciones y pantallas de carga continuas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Caja de Confianza de Seguridad -->
+    <section id="seguridad" class="security-sec">
+        <div class="container">
+            <div class="security-box">
+                <div>
+                    <span class="sec-badge">⚠️ Transparencia en la Instalación</span>
+                    <h2>Nuestra máxima prioridad es proteger tu dispositivo</h2>
+                    <p>
+                        El instalador de Play+ es analizado y empaquetado de manera limpia para garantizar que tu dispositivo esté seguro. Para salvaguardar tu tranquilidad, explicamos abiertamente cómo funciona la seguridad del sistema Android para que configures tu instalación sin temor.
+                    </p>
+                    <div class="sec-tags">
+                        <span class="sec-tag">✓ Archivo Analizado Completo</span>
+                        <span class="sec-tag">✓ Sin Acceso a Archivos Privados</span>
+                        <span class="sec-tag">✓ Instalación Externa de Confianza</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Certificado -->
+                <div class="cert-card">
+                    <div class="cert-icon">🔒</div>
+                    <h4>¿Por qué sale la advertencia?</h4>
+                    <p>Google alerta de forma generalizada sobre cualquier instalación externa para animar a usar solo su tienda oficial. No obstante, nuestro APK es limpio y seguro de ejecutar.</p>
+                    <span class="pill-clean">INSTALACIÓN VERIFICADA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guía de Instalación -->
+    <section id="instalacion" class="guide">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Instalación Rápida en 3 Pasos</h2>
+                <p>Configura tu teléfono Android para poder usar la aplicación de forma inmediata.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h3>Descarga el Archivo APK</h3>
+                        <p>Pulsa el botón de descarga y espera a que el archivo de instalación <code>Play+_6.1.apk</code> se guarde en tu dispositivo.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h3>Omite la Advertencia Genérica</h3>
+                        <p>Si Android te muestra una advertencia de "origen desconocido" o de "archivo dañino", pulsa sobre <strong>"Instalar de todas formas"</strong> o <strong>"Permitir desde esta fuente"</strong> para continuar. Es el procedimiento normal para cualquier app independiente.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h3>Instala y Disfruta</h3>
+                        <p>Haz clic sobre la descarga completada, selecciona "Instalar" y ábrela para empezar a ver tus contenidos favoritos de inmediato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos de manera transparente tus dudas sobre el servicio.</p>
+            </div>
+
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-header" onclick="toggleFaq(this)">
+                        <span>¿Es normal que mi teléfono diga que el archivo puede ser dañino?</span>
+                        <span>▼</span>
                     </button>
-                    
-                    <div class="flex items-center justify-center gap-1.5 text-[11px] text-zinc-500">
-                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
-                        <span>Archivo APK 100% verificado y seguro</span>
-                    </div>
-
-                    <!-- Ficha Técnica -->
-                    <div class="border-t border-zinc-900 pt-3 mt-1 text-[11px] space-y-1.5 text-zinc-400">
-                        <div class="flex justify-between">
-                            <span class="text-zinc-500">Requisito mínimo:</span>
-                            <span>Android 5.0 o superior</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-zinc-500">Peso del archivo:</span>
-                            <span>18.4 MB</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-zinc-500">Categoría:</span>
-                            <span>Entretenimiento (Sin Anuncios)</span>
-                        </div>
+                    <div class="faq-body">
+                        <p>Sí, es completamente normal. Android implementa esta advertencia general para todos los archivos APK que se descargan directamente de internet (fuera de la Play Store oficial). Es una alerta preventiva y automática, pero el instalador de Play+ es totalmente seguro y está libre de virus.</p>
                     </div>
                 </div>
 
-                <!-- ESTADO 2: Cargando / Analizando -->
-                <div id="status-loading" class="hidden space-y-4 py-3">
-                    <div class="flex justify-between text-xs">
-                        <span id="loading-message" class="font-medium text-red-400">Iniciando descarga segura...</span>
-                        <span id="loading-percent" class="font-bold text-white">0%</span>
-                    </div>
-                    
-                    <div class="w-full h-2 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800">
-                        <div id="loading-bar" class="h-full bg-gradient-to-r from-red-500 to-rose-500 w-0 transition-all duration-100"></div>
-                    </div>
-                    
-                    <div class="bg-black/40 rounded-lg p-2.5 border border-zinc-900/80 font-mono text-[10px] text-zinc-500 text-center" id="loading-subtext">
-                        Conectando con el servidor oficial...
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-header" onclick="toggleFaq(this)">
+                        <span>¿Por qué es gratuita?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Play+ funciona de manera altruista y transparente. El reproductor recopila enlaces y directorios de servidores de alojamiento de código público y los procesa de forma nativa sin generar costos de almacenamiento propios.</p>
                     </div>
                 </div>
 
-                <!-- ESTADO 3: Completado -->
-                <div id="status-completed" class="hidden text-center space-y-4 py-2">
-                    <div class="mx-auto w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center border border-emerald-500/20">
-                        <i data-lucide="check" class="w-5 h-5 text-emerald-400"></i>
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-header" onclick="toggleFaq(this)">
+                        <span>¿Necesito una cuenta o ingresar datos?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>No, bajo ningún concepto. En Play+ valoramos tu privacidad y seguridad; por tanto, no se requiere ningún registro, correo electrónico o métodos de pago.</p>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-white text-sm">Descarga del APK iniciada</h3>
-                        <p class="text-[11px] text-zinc-400 mt-1">Si la instalación automática no se inicia en tu teléfono móvil, pulsa abajo:</p>
-                    </div>
-                    <a href="https://tinyurl.com/58eyb2wz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs text-red-500 hover:text-red-400 font-bold underline">
-                        Presiona aquí para descargar manualmente
-                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                    </a>
                 </div>
 
-            </div>
-
-            <!-- Pasos Rápidos de Instalación en Móvil -->
-            <div class="space-y-3 pt-2">
-                <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <i data-lucide="info" class="w-3.5 h-3.5 text-red-500"></i>
-                    Cómo instalar en tu móvil:
-                </h3>
-                <div class="space-y-2">
-                    <div class="flex items-start gap-2.5 text-xs">
-                        <span class="w-4 h-4 bg-zinc-800 text-zinc-300 font-bold rounded text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
-                        <p class="text-zinc-400"><strong class="text-zinc-200">Baja el APK:</strong> Pulsa el botón de arriba para descargar el archivo directo.</p>
-                    </div>
-                    <div class="flex items-start gap-2.5 text-xs">
-                        <span class="w-4 h-4 bg-zinc-800 text-zinc-300 font-bold rounded text-[10px] flex items-center justify-center shrink-0 mt-0.5">2</span>
-                        <p class="text-zinc-400"><strong class="text-zinc-200">Permite Orígenes:</strong> Si el sistema lo pide, autoriza la instalación de apps externas de tu navegador.</p>
-                    </div>
-                    <div class="flex items-start gap-2.5 text-xs">
-                        <span class="w-4 h-4 bg-zinc-800 text-zinc-300 font-bold rounded text-[10px] flex items-center justify-center shrink-0 mt-0.5">3</span>
-                        <p class="text-zinc-400"><strong class="text-zinc-200">Disfruta:</strong> Busca el archivo en tus notificaciones o descargas, ábrelo, dale a "Instalar" y ya está listo.</p>
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-header" onclick="toggleFaq(this)">
+                        <span>¿Es compatible con Smart TV?</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="faq-body">
+                        <p>Sí. La app es compatible con dispositivos TV Box, Fire TV Stick y televisores inteligentes que cuenten con el sistema operativo Android TV. También puedes enviar contenido mediante la función de transmisión de tu móvil.</p>
                     </div>
                 </div>
             </div>
-
         </div>
+    </section>
 
-        <!-- Preguntas Frecuentes Cortas (FAQ) -->
-        <div class="w-full mt-8 space-y-2.5">
-            <h3 class="text-center font-bold text-sm text-zinc-300 mb-1">Dudas Frecuentes</h3>
+    <!-- Descarga Final -->
+    <section class="banner-final">
+        <div class="container banner-final-content">
+            <h2>Comienza a disfrutar ahora mismo</h2>
+            <p>Accede al catálogo de cine y series más grande sin anuncios molestos e interrupciones en tu dispositivo móvil o televisor.</p>
             
-            <div class="bg-zinc-900/30 border border-zinc-800/60 rounded-xl overflow-hidden">
-                <button onclick="toggleAccordion('faq-1')" class="w-full p-3.5 flex justify-between items-center text-left hover:bg-zinc-900/60 transition-colors">
-                    <span class="font-bold text-xs sm:text-sm text-zinc-300">¿Es compatible con mi celular?</span>
-                    <i data-lucide="chevron-down" id="faq-1-arrow" class="w-4 h-4 text-zinc-500 transition-transform"></i>
-                </button>
-                <div id="faq-1" class="hidden p-3.5 bg-zinc-950/20 border-t border-zinc-900 text-xs text-zinc-400 leading-relaxed">
-                    Es totalmente compatible con cualquier teléfono o tablet que use el sistema operativo Android versión 5.0 en adelante.
-                </div>
-            </div>
-
-            <div class="bg-zinc-900/30 border border-zinc-800/60 rounded-xl overflow-hidden">
-                <button onclick="toggleAccordion('faq-2')" class="w-full p-3.5 flex justify-between items-center text-left hover:bg-zinc-900/60 transition-colors">
-                    <span class="font-bold text-xs sm:text-sm text-zinc-300">¿De verdad está libre de anuncios?</span>
-                    <i data-lucide="chevron-down" id="faq-2-arrow" class="w-4 h-4 text-zinc-500 transition-transform"></i>
-                </button>
-                <div id="faq-2" class="hidden p-3.5 bg-zinc-950/20 border-t border-zinc-900 text-xs text-zinc-400 leading-relaxed">
-                    Sí, esta versión 6.0 oficial está modificada para bloquear los anuncios molestos, permitiéndote ver todo el catálogo sin interrupciones.
-                </div>
-            </div>
+            <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span>Descargar Play+ 6.1 (Gratis)</span>
+            </a>
         </div>
+    </section>
 
-    </main>
-
-    <!-- Pie de página simple -->
-    <footer class="relative z-10 border-t border-zinc-900 bg-zinc-950 py-5 text-center text-[10px] text-zinc-600 px-4">
-        <p>© 2026 Play+ Oficial. Exclusivo para dispositivos Android.</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-status">
+                <span class="pulse-dot"></span>
+                <span>Plataforma de descarga activa</span>
+            </div>
+            <p class="footer-text">© 2026 Play+. Todos los derechos reservados.</p>
+            <p class="footer-disc">Exención de responsabilidad: Play+ no aloja ni almacena películas con derechos de autor en sus servidores. Es un reproductor inteligente que indexa y enlaza enlaces disponibles públicamente en la web.</p>
+        </div>
     </footer>
 
-    <!-- Lógica de Simulación de Descarga -->
     <script>
-        // Inicializar los iconos de la librería
-        lucide.createIcons();
-
-        function startAndroidDownload() {
-            const readyState = document.getElementById('status-ready');
-            const loadingState = document.getElementById('status-loading');
-            const completedState = document.getElementById('status-completed');
+        // Función interactiva para abrir/cerrar las preguntas frecuentes
+        function toggleFaq(button) {
+            const body = button.nextElementSibling;
+            const icon = button.querySelector('span:last-child');
             
-            const loadingBar = document.getElementById('loading-bar');
-            const loadingPercent = document.getElementById('loading-percent');
-            const loadingMessage = document.getElementById('loading-message');
-            const loadingSubtext = document.getElementById('loading-subtext');
-
-            readyState.classList.add('hidden');
-            loadingState.classList.remove('hidden');
-
-            let progress = 0;
-            const steps = [
-                { limit: 25, msg: "Conectando al servidor seguro...", sub: "Iniciando descarga segura de Play+ APK" },
-                { limit: 55, msg: "Analizando firma del paquete...", sub: "Verificando firmas digitales de seguridad" },
-                { limit: 80, msg: "Pasando filtro Play Protect...", sub: "Confirmando instalación libre de virus" },
-                { limit: 100, msg: "Descarga casi lista...", sub: "Generando paquete PlayPlus_v6.0.apk" }
-            ];
-
-            const interval = setInterval(() => {
-                progress += Math.floor(Math.random() * 6) + 4;
-                if (progress > 100) progress = 100;
-
-                loadingBar.style.width = `${progress}%`;
-                loadingPercent.innerText = `${progress}%`;
-
-                // Cambiar textos según el progreso simulado
-                steps.forEach(step => {
-                    if (progress >= step.limit) {
-                        loadingMessage.innerText = step.msg;
-                        loadingSubtext.innerText = step.sub;
-                    }
-                });
-
-                if (progress === 100) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        loadingState.classList.add('hidden');
-                        completedState.classList.remove('hidden');
-                        
-                        // Abrir el enlace de descarga real en otra pestaña
-                        window.open("https://tinyurl.com/58eyb2wz", "_blank");
-                    }, 600);
-                }
-            }, 100);
-        }
-
-        // Control del Acordeón para FAQs
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            const arrow = document.getElementById(`${id}-arrow`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
+            if (body.style.maxHeight && body.style.maxHeight !== '0px') {
+                body.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
             } else {
-                content.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
+                body.style.maxHeight = body.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                icon.style.transition = 'transform 0.2s';
             }
         }
     </script>
