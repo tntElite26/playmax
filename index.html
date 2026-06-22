@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play+ | Descargar Aplicación Oficial Gratis</title>
+    <title>Play+ | Descargar Aplicación Oficial de Películas Gratis</title>
     <style>
         /* Variables de diseño premium (Paleta oscura corporativa) */
         :root {
@@ -19,6 +19,15 @@
             --warning-border: rgba(245, 158, 11, 0.25);
             --success: #10b981;
             --success-bg: rgba(16, 185, 129, 0.1);
+            --tv-color: #3b82f6;
+            --tv-bg: rgba(59, 130, 246, 0.08);
+            --tv-border: rgba(59, 130, 246, 0.25);
+            
+            /* Colores de marca para Canales Oficiales */
+            --telegram: #0088cc;
+            --whatsapp: #25d366;
+            --youtube: #ff0000;
+            --mastodon: #6364ff;
         }
 
         /* Reset básico */
@@ -132,7 +141,7 @@
             box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
         }
 
-        /* Sección de Héroe */
+        /* Sección del Héroe */
         .hero {
             position: relative;
             padding: 60px 0 80px 0;
@@ -140,9 +149,9 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 48px;
-            align-items: center;
+            align-items: start;
         }
 
         /* Luces de ambiente */
@@ -200,14 +209,20 @@
             max-width: 540px;
         }
 
-        /* Caja de Descarga */
+        /* Contenedor de Opciones de Descarga */
+        .download-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 540px;
+        }
+
         .download-box {
             background: rgba(18, 18, 21, 0.8);
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 24px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 540px;
         }
 
         .download-flex {
@@ -260,6 +275,93 @@
         .btn-large:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(255, 42, 95, 0.5);
+        }
+
+        /* Caja de Downloader para TV */
+        .tv-download-box {
+            background: rgba(18, 18, 21, 0.8);
+            border: 1px solid var(--tv-border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-download-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .downloader-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .downloader-info {
+            flex-grow: 1;
+        }
+
+        .downloader-info .tv-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--tv-bg);
+            color: #60a5fa;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .downloader-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .downloader-info p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .code-display {
+            background: #1e1e24;
+            border: 2px dashed #3b82f6;
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .code-display span {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #93c5fd;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+            letter-spacing: 1px;
+        }
+
+        .code-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-family: monospace;
         }
 
         /* Estadísticas rápidas */
@@ -368,7 +470,7 @@
             color: var(--text-main);
         }
 
-        /* Banner de Aviso de Seguridad Reasentador */
+        /* Banner de Aviso de Seguridad */
         .security-notice {
             background-color: var(--warning-bg);
             border: 1px solid var(--warning-border);
@@ -481,9 +583,110 @@
             color: var(--text-muted);
         }
 
+        /* Sección Canales Oficiales / Comunidad (NUEVA) */
+        .community-sec {
+            background: #09090b;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .community-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px 24px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .community-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px -10px rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .community-card:hover .social-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Colores e intensidades personalizados para cada plataforma */
+        .card-tg:hover { border-color: var(--telegram); }
+        .card-tg .social-icon-wrapper { background: rgba(0, 136, 204, 0.1); color: var(--telegram); }
+        
+        .card-wa:hover { border-color: var(--whatsapp); }
+        .card-wa .social-icon-wrapper { background: rgba(37, 211, 102, 0.1); color: var(--whatsapp); }
+
+        .card-yt:hover { border-color: var(--youtube); }
+        .card-yt .social-icon-wrapper { background: rgba(255, 0, 0, 0.1); color: var(--youtube); }
+
+        .card-md:hover { border-color: var(--mastodon); }
+        .card-md .social-icon-wrapper { background: rgba(99, 100, 255, 0.1); color: var(--mastodon); }
+
+        .community-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .community-card p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn-social-action {
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .card-tg .btn-social-action { background: rgba(0, 136, 204, 0.08); color: var(--telegram); }
+        .card-tg:hover .btn-social-action { background: var(--telegram); color: white; }
+
+        .card-wa .btn-social-action { background: rgba(37, 211, 102, 0.08); color: var(--whatsapp); }
+        .card-wa:hover .btn-social-action { background: var(--whatsapp); color: white; }
+
+        .card-yt .btn-social-action { background: rgba(255, 0, 0, 0.08); color: var(--youtube); }
+        .card-yt:hover .btn-social-action { background: var(--youtube); color: white; }
+
+        .card-md .btn-social-action { background: rgba(99, 100, 255, 0.08); color: var(--mastodon); }
+        .card-md:hover .btn-social-action { background: var(--mastodon); color: white; }
+
+
         /* Sección Seguridad */
         .security-sec {
             padding: 80px 0;
+            background-color: #0d0d11;
+            border-top: 1px solid var(--card-border);
         }
 
         .security-box {
@@ -631,6 +834,12 @@
             font-size: 13px;
         }
 
+        .step-text .tv-code-highlight {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
         /* Acordeón FAQ */
         .faq {
             padding: 80px 0;
@@ -754,7 +963,7 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .download-box {
+            .download-container {
                 margin: 0 auto;
             }
             .info-panel {
@@ -762,6 +971,9 @@
             }
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            .community-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .security-box {
                 grid-template-columns: 1fr;
@@ -772,10 +984,23 @@
             }
         }
 
+        @media (max-width: 580px) {
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 480px) {
             .download-flex {
                 flex-direction: column;
                 text-align: center;
+            }
+            .downloader-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .code-display {
+                width: 100%;
             }
             .btn-large {
                 width: 100%;
@@ -803,6 +1028,7 @@
             
             <div class="nav-links">
                 <a href="#caracteristicas">Beneficios</a>
+                <a href="#comunidad">Comunidad</a>
                 <a href="#seguridad">Seguridad</a>
                 <a href="#instalacion">Cómo Instalar</a>
                 <a href="#faq">Soporte</a>
@@ -825,48 +1051,71 @@
                     <span>📦 Versión Oficial 6.1 — Descarga Directa Segura</span>
                 </div>
                 
-                <h1>Películas y Series Gratis <br><span class="gradient-text">Sin Anuncios Molestos</span></h1>
+                <h1>Películas Gratis <br><span class="gradient-text">Sin Anuncios Molestos</span></h1>
                 
                 <p class="hero-desc">
-                    Disfruta de todo tu entretenimiento en streaming con Play+. Un reproductor fluido diseñado para brindarte contenido en la más alta resolución posible, sin anuncios intrusivos y totalmente libre de suscripciones de pago.
+                    Disfruta de todas tus películas favoritas en streaming con Play+. Un reproductor fluido diseñado para brindarte el contenido cinematográfico en la más alta resolución posible, sin anuncios intrusivos y totalmente libre de suscripciones de pago.
                 </p>
 
-                <!-- Bloque de Descarga -->
-                <div class="download-box">
-                    <div class="download-flex">
-                        <div class="file-info">
-                            <p class="subtitle">Enlace Directo Oficial</p>
-                            <p class="title">Play+_6.1.apk</p>
-                            <p class="specs">Peso: 18.5 MB | Android 5.0+</p>
+                <!-- Contenedor de Opciones de Descarga -->
+                <div class="download-container">
+                    
+                    <!-- Opción 1: Celular / Tablet (APK Directo) -->
+                    <div class="download-box">
+                        <div class="download-flex">
+                            <div class="file-info">
+                                <p class="subtitle">OPCIÓN 1: CELULAR / TABLET (APK)</p>
+                                <p class="title">Play+_6.1.apk</p>
+                                <p class="specs">Peso: 18.5 MB | Android 5.0+</p>
+                            </div>
+                            
+                            <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
+                                <!-- Icono Flecha Descarga SVG -->
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                                <span>Descargar APK</span>
+                            </a>
                         </div>
-                        
-                        <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
-                            <!-- Icono Flecha Descarga SVG -->
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                            <span>Descargar APK</span>
-                        </a>
+                    </div>
+
+                    <!-- Opción 2: Smart TV / TV Box / Fire TV (Código Downloader) -->
+                    <div class="tv-download-box">
+                        <div class="downloader-flex">
+                            <div class="downloader-info">
+                                <span class="tv-badge">📺 Opción 2: Smart TV & Fire Stick</span>
+                                <h4>Instalar vía Aplicación Downloader</h4>
+                                <p>Abre la aplicación Downloader en tu TV e ingresa el código numérico al lado para iniciar la transferencia rápida.</p>
+                            </div>
+                            
+                            <div class="code-display">
+                                <span>CÓDIGO TV</span>
+                                <div class="code-number">6288220</div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Métricas -->
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h4>4.8/5</h4>
-                            <p>Valoración</p>
-                        </div>
-                        <div class="stat-item" style="border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border);">
-                            <h4 style="color: var(--success);">Protegido</h4>
-                            <p>Sin Malware</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>+100K</h4>
-                            <p>Instalaciones</p>
+                    <div class="download-box" style="padding-top: 0; padding-bottom: 20px; margin-top: -10px; border-top: none; border-top-left-radius: 0; border-top-right-radius: 0;">
+                        <div class="stats" style="margin-top: 0; border-top: 1px solid var(--card-border);">
+                            <div class="stat-item">
+                                <h4>4.8/5</h4>
+                                <p>Valoración</p>
+                            </div>
+                            <div class="stat-item" style="border-left: 1px solid var(--card-border); border-right: 1px solid var(--card-border);">
+                                <h4 style="color: var(--success);">Protegido</h4>
+                                <p>Sin Malware</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>+100K</h4>
+                                <p>Instalaciones</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="security-live">
                     <div class="pulse-dot"></div>
-                    <span>Servidor de descarga activo con ancho de banda ilimitado y conexión cifrada.</span>
+                    <span>Servidores de descarga rápidos y activos con ancho de banda ilimitado.</span>
                 </div>
             </div>
 
@@ -884,6 +1133,10 @@
                         <td class="spec-value">6.1 (Estable)</td>
                     </tr>
                     <tr>
+                        <td class="spec-label">Código Downloader TV</td>
+                        <td class="spec-value" style="color: #60a5fa; font-weight: bold;">6288220</td>
+                    </tr>
+                    <tr>
                         <td class="spec-label">Compatibilidad Mínima</td>
                         <td class="spec-value">Android 5.0 (Lollipop) o superior</td>
                     </tr>
@@ -897,27 +1150,27 @@
                     </tr>
                 </table>
 
-                <!-- Aviso Reasentador de Seguridad de Android -->
+                <!-- Aviso de Seguridad de Android -->
                 <div class="security-notice">
                     <div class="security-notice-icon">⚠️</div>
                     <div class="security-notice-text">
-                        <h4>Aviso del Sistema Android</h4>
-                        <p>Al instalar, Android podría mostrar un mensaje advirtiendo que es un <em>"archivo potencialmente dañino"</em> o de <em>"origen desconocido"</em>. <strong>Esta alerta es totalmente normal</strong> y aparece automáticamente con cualquier app instalada fuera de Google Play Store. Play+ es segura, libre de malware y lista para usarse.</p>
+                        <h4>Aviso de Seguridad de Android</h4>
+                        <p>Al realizar la instalación, Android podría emitir un aviso genérico de <em>"archivo potencialmente dañino"</em> o de <em>"origen desconocido"</em>. <strong>Esta advertencia es totalmente normal</strong> y es generada automáticamente para cualquier archivo instalado fuera de Google Play Store. Play+ es seguro, está libre de malware y listo para funcionar.</p>
                     </div>
                 </div>
 
                 <div class="trust-checklist">
                     <div class="trust-item">
                         <span class="trust-icon">✓</span>
-                        <span>Firma del instalador nativa y limpia</span>
+                        <span>Firma digital del instalador nativa y limpia</span>
                     </div>
                     <div class="trust-item">
                         <span class="trust-icon">✓</span>
-                        <span>Código optimizado libre de rastreadores</span>
+                        <span>Código optimizado libre de sistemas de rastreo</span>
                     </div>
                     <div class="trust-item">
                         <span class="trust-icon">✓</span>
-                        <span>No requiere permisos de almacenamiento privado</span>
+                        <span>No requiere permisos de almacenamiento sensibles</span>
                     </div>
                 </div>
             </div>
@@ -930,7 +1183,7 @@
         <div class="container">
             <div class="sec-title">
                 <h2>¿Por qué elegir Play+?</h2>
-                <p>Olvídate de las malas experiencias de streaming móvil. Play+ ha sido desarrollado bajo estrictos estándares de calidad para el usuario.</p>
+                <p>Olvídate de las malas experiencias de streaming móvil. Play+ ha sido desarrollado con el estándar de calidad que mereces.</p>
             </div>
 
             <div class="features-grid">
@@ -938,20 +1191,78 @@
                 <div class="feature-card">
                     <div class="feature-icon">🚫</div>
                     <h3>Sin Anuncios Intrusivos</h3>
-                    <p>Disfruta de tus contenidos preferidos sin comerciales molestos, banners flotantes ni páginas que se abren solas.</p>
+                    <p>Disfruta de tus películas preferidas de principio a fin sin cortes publicitarios, ventanas emergentes ni redirecciones forzadas.</p>
                 </div>
                 <!-- Beneficio 2 -->
                 <div class="feature-card">
                     <div class="feature-icon">🎬</div>
-                    <h3>Catálogo Siempre Al Día</h3>
-                    <p>Accede de inmediato a los últimos lanzamientos de la industria y a temporadas completas con audio latino y castellano.</p>
+                    <h3>Catálogo de Cine Al Día</h3>
+                    <p>Accede de inmediato a los últimos lanzamientos de la cartelera mundial y a películas clásicas con audio latino y castellano.</p>
                 </div>
                 <!-- Beneficio 3 -->
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Reproducción Instantánea</h3>
-                    <p>Servidores con velocidad optimizada que evitan las molestas detenciones y pantallas de carga continuas.</p>
+                    <p>Conexión rápida a servidores optimizados que eliminan las pausas frecuentes y la lentitud al cargar (buffering).</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Canales Oficiales / Comunidad (NUEVA) -->
+    <section id="comunidad" class="community-sec">
+        <div class="container">
+            <div class="sec-title">
+                <h2>Únete a la Comunidad Oficial</h2>
+                <p>Mantente en contacto directo, solicita tus películas favoritas, entérate de las novedades antes que nadie y sigue de cerca al creador.</p>
+            </div>
+
+            <div class="community-grid">
+                
+                <!-- Telegram (Pedidos) -->
+                <a href="https://t.me/PlayGoPedidos" target="_blank" rel="noopener" class="community-card card-tg">
+                    <div class="social-icon-wrapper">
+                        <!-- Icono Telegram HD SVG -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .33z"/></svg>
+                    </div>
+                    <h3>Canal de Pedidos</h3>
+                    <p>Pide tus películas favoritas y recíbelas agregadas al reproductor de forma prioritaria.</p>
+                    <div class="btn-social-action">Pedir Película</div>
+                </a>
+
+                <!-- WhatsApp (Novedades) -->
+                <a href="https://whatsapp.com/channel/0029VaSTj8i6xCSUcChevG3b" target="_blank" rel="noopener" class="community-card card-wa">
+                    <div class="social-icon-wrapper">
+                        <!-- Icono WhatsApp HD SVG -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.371a9.945 9.945 0 004.777 1.216h.005c5.505 0 9.989-4.479 9.99-9.986 0-2.67-1.038-5.177-2.923-7.062A9.925 9.925 0 0012.012 2zm5.827 14.156c-.32.9-1.845 1.748-2.54 1.811-.634.058-1.271.32-3.415-.522-2.744-1.08-4.517-3.86-4.653-4.04-.137-.18-1.114-1.48-1.114-2.81 0-1.33.695-1.984.945-2.254.25-.27.545-.337.727-.337.18 0 .363.002.52.01.166.008.388-.063.608.468.226.546.772 1.878.84 2.014.068.136.113.295.022.477-.09.18-.135.295-.272.454-.136.16-.288.358-.41.48-.136.134-.277.28-.12.547.158.267.702 1.156 1.503 1.87.1.09.186.136.277.136.186 0 .324-.078.473-.243.15-.165.635-.745.805-1 .17-.253.34-.21.574-.124.233.088 1.482.7 1.737.828.256.128.427.19.49.3.064.11.064.63-.256 1.53z"/></svg>
+                    </div>
+                    <h3>Canal de WhatsApp</h3>
+                    <p>Entérate de inmediato de actualizaciones, corrección de servidores y nuevos lanzamientos.</p>
+                    <div class="btn-social-action">Seguir Canal</div>
+                </a>
+
+                <!-- YouTube (TNT Projects) -->
+                <a href="https://youtube.com/@tntprojects26?si=4Tnc-rwD2R59qIK8" target="_blank" rel="noopener" class="community-card card-yt">
+                    <div class="social-icon-wrapper">
+                        <!-- Icono YouTube HD SVG -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </div>
+                    <h3>Canal de YouTube</h3>
+                    <p>Videotutoriales oficiales para aprender a instalar en televisores y optimizar la app.</p>
+                    <div class="btn-social-action">Ir al Canal</div>
+                </a>
+
+                <!-- Mastodon (Creador) -->
+                <a href="https://mast.lat/@tntprojects" target="_blank" rel="noopener" class="community-card card-md">
+                    <div class="social-icon-wrapper">
+                        <!-- Icono Mastodon HD SVG -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-4.96C14.99.076 12.29 0 12 0c-.29 0-2.99.076-5.964.353C3.35.703 1.082 2.735.733 5.313.348 8.145.3 12.052.3 12.052s.048 3.907.433 6.74c.35 2.577 2.617 4.61 5.304 4.96 1.956.183 3.847.234 5.39.246.33 0 .573-.01.573-.01V21.12s-.243.01-.573.01c-1.543-.012-3.434-.063-5.39-.246-1.574-.148-2.923-1.373-3.13-2.96-.2-1.5-.236-4.085-.236-5.872 0 0 2.535.65 5.963.766 1.487.05 2.92-.016 4.303-.122 2.744-.21 5.066-.9 6.27-1.748.163-.114.316-.233.46-.356.143-.123.263-.25.358-.38 1.15-.152 2.1-.512 2.1-.512s-.036 4.37-.236 5.872c-.207 1.587-1.556 2.812-3.13 2.96-1.956.183-3.847.234-5.39.246-.33 0-.573-.01-.573-.01V24s2.99-.076 5.964-.353c2.687-.35 4.954-2.382 5.304-4.96.385-2.833.433-6.74.433-6.74s-.048-3.907-.433-6.741zM12 8.35c-.47-.442-.99-.817-1.46-1.077-.473-.26-1.002-.383-1.59-.383-1.073 0-1.897.355-2.472 1.066C5.9 8.666 5.61 9.682 5.61 11v6.134h2.51v-6.023c0-.98.397-1.47 1.19-1.47.662 0 1.082.376 1.258 1.127l.15 1.054h1.565l.15-1.054c.176-.75.596-1.127 1.258-1.127.794 0 1.192.49 1.192 1.47v6.023h2.512V11c0-1.318-.29-2.334-.868-3.047-.575-.71-1.4-.105-2.473-1.066-.587 0-1.117.124-1.59.383-.47.26-.99.635-1.46 1.077z"/></svg>
+                    </div>
+                    <h3>Creador en Mastodon</h3>
+                    <p>Sigue la cuenta oficial del creador para enterarte del proceso de desarrollo del proyecto.</p>
+                    <div class="btn-social-action">Ver Perfil</div>
+                </a>
+
             </div>
         </div>
     </section>
@@ -961,15 +1272,15 @@
         <div class="container">
             <div class="security-box">
                 <div>
-                    <span class="sec-badge">⚠️ Transparencia en la Instalación</span>
+                    <span class="sec-badge">⚠️ Transparencia Total en Instalación</span>
                     <h2>Nuestra máxima prioridad es proteger tu dispositivo</h2>
                     <p>
-                        El instalador de Play+ es analizado y empaquetado de manera limpia para garantizar que tu dispositivo esté seguro. Para salvaguardar tu tranquilidad, explicamos abiertamente cómo funciona la seguridad del sistema Android para que configures tu instalación sin temor.
+                        La aplicación Play+ pasa por análisis sistemáticos para asegurar que el archivo de instalación está intacto y protegido. Explicamos detalladamente las políticas de seguridad del sistema Android para que instales con total tranquilidad y sin temores.
                     </p>
                     <div class="sec-tags">
                         <span class="sec-tag">✓ Archivo Analizado Completo</span>
                         <span class="sec-tag">✓ Sin Acceso a Archivos Privados</span>
-                        <span class="sec-tag">✓ Instalación Externa de Confianza</span>
+                        <span class="sec-tag">✓ Método Oficial Seguro de TV</span>
                     </div>
                 </div>
 
@@ -977,7 +1288,7 @@
                 <div class="cert-card">
                     <div class="cert-icon">🔒</div>
                     <h4>¿Por qué sale la advertencia?</h4>
-                    <p>Google alerta de forma generalizada sobre cualquier instalación externa para animar a usar solo su tienda oficial. No obstante, nuestro APK es limpio y seguro de ejecutar.</p>
+                    <p>Los sistemas operativos móviles emiten alertas automáticas para promover la utilización exclusiva de sus respectivas tiendas integradas. No obstante, nuestro archivo APK es limpio y seguro de ejecutar.</p>
                     <span class="pill-clean">INSTALACIÓN VERIFICADA</span>
                 </div>
             </div>
@@ -988,32 +1299,37 @@
     <section id="instalacion" class="guide">
         <div class="container">
             <div class="sec-title">
-                <h2>Instalación Rápida en 3 Pasos</h2>
-                <p>Configura tu teléfono Android para poder usar la aplicación de forma inmediata.</p>
+                <h2>Guía Completa de Instalación</h2>
+                <p>Sigue los pasos correspondientes a tu dispositivo para comenzar a disfrutar de inmediato.</p>
             </div>
 
             <div class="steps-container">
-                <div class="step-item">
+                <!-- Método Celular -->
+                <div class="step-item" style="border-left: 4px solid var(--primary);">
                     <div class="step-number">1</div>
                     <div class="step-text">
-                        <h3>Descarga el Archivo APK</h3>
-                        <p>Pulsa el botón de descarga y espera a que el archivo de instalación <code>Play+_6.1.apk</code> se guarde en tu dispositivo.</p>
+                        <h3>En el Celular o Tablet Android</h3>
+                        <p>Descarga el archivo <code>Play+_6.1.apk</code> con el botón de la Opción 1. Abre el archivo y, si el sistema lo solicita, autoriza la instalación de "orígenes desconocidos" en tu navegador. Procede y pulsa en <strong>Instalar</strong>.</p>
                     </div>
                 </div>
 
-                <div class="step-item">
+                <!-- Método Smart TV / Downloader -->
+                <div class="step-item" style="border-left: 4px solid #3b82f6;">
                     <div class="step-number">2</div>
                     <div class="step-text">
-                        <h3>Omite la Advertencia Genérica</h3>
-                        <p>Si Android te muestra una advertencia de "origen desconocido" o de "archivo dañino", pulsa sobre <strong>"Instalar de todas formas"</strong> o <strong>"Permitir desde esta fuente"</strong> para continuar. Es el procedimiento normal para cualquier app independiente.</p>
+                        <h3>En la Smart TV, TV Box o Fire TV (Downloader)</h3>
+                        <p>1. Ve a la tienda de aplicaciones de tu TV (Google Play Store o Amazon Appstore) y busca la app oficial <strong>Downloader</strong> (es la aplicación de color naranja con un icono de descarga).</p>
+                        <p style="margin-top: 8px;">2. Abre Downloader y en el campo de dirección URL introduce el código numérico: <strong class="tv-code-highlight" style="padding: 2px 6px; border-radius: 4px; font-family: monospace;">6288220</strong> y pulsa en el botón <strong>"Go"</strong>.</p>
+                        <p style="margin-top: 8px;">3. La descarga del archivo APK oficial comenzará de inmediato. Autoriza la instalación en la TV en cuanto el proceso finalice.</p>
                     </div>
                 </div>
 
+                <!-- Paso Final -->
                 <div class="step-item">
                     <div class="step-number">3</div>
                     <div class="step-text">
-                        <h3>Instala y Disfruta</h3>
-                        <p>Haz clic sobre la descarga completada, selecciona "Instalar" y ábrela para empezar a ver tus contenidos favoritos de inmediato.</p>
+                        <h3>¡Abre Play+ y Disfruta!</h3>
+                        <p>Accede directamente al catálogo ilimitado de películas. No necesitas crear una cuenta, asociar correos electrónicos ni realizar configuraciones difíciles.</p>
                     </div>
                 </div>
             </div>
@@ -1025,51 +1341,51 @@
         <div class="container">
             <div class="sec-title">
                 <h2>Preguntas Frecuentes</h2>
-                <p>Resolvemos de manera transparente tus dudas sobre el servicio.</p>
+                <p>Resolvemos tus dudas técnicas de forma abierta y honesta.</p>
             </div>
 
             <div class="faq-container">
                 <!-- FAQ 1 -->
                 <div class="faq-item">
                     <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>¿Es normal que mi teléfono diga que el archivo puede ser dañino?</span>
+                        <span>¿Por qué mi TV o celular avisa que el archivo puede ser dañino?</span>
                         <span>▼</span>
                     </button>
                     <div class="faq-body">
-                        <p>Sí, es completamente normal. Android implementa esta advertencia general para todos los archivos APK que se descargan directamente de internet (fuera de la Play Store oficial). Es una alerta preventiva y automática, pero el instalador de Play+ es totalmente seguro y está libre de virus.</p>
+                        <p>Se trata de una alerta automática y genérica de Android. Google y otros fabricantes la implementan por precaución con todos los archivos instalados de manera manual (archivos APK descargados fuera de la Play Store oficial). Play+ es un reproductor de películas limpio, seguro y verificado, por lo que puedes omitir el aviso e instalarlo con total confianza.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
                 <div class="faq-item">
                     <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>¿Por qué es gratuita?</span>
+                        <span>¿Cómo instalo la aplicación en Fire TV Stick o TV Box?</span>
                         <span>▼</span>
                     </button>
                     <div class="faq-body">
-                        <p>Play+ funciona de manera altruista y transparente. El reproductor recopila enlaces y directorios de servidores de alojamiento de código público y los procesa de forma nativa sin generar costos de almacenamiento propios.</p>
+                        <p>El método ideal es utilizando la aplicación "Downloader", disponible en la tienda oficial de tu televisor. Inicia la aplicación, introduce el código de descarga exclusivo <strong>6288220</strong> en el buscador principal y el instalador oficial de Play+ se descargará automáticamente.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
                 <div class="faq-item">
                     <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>¿Necesito una cuenta o ingresar datos?</span>
+                        <span>¿Por qué es gratuita y cómo se financia?</span>
                         <span>▼</span>
                     </button>
                     <div class="faq-body">
-                        <p>No, bajo ningún concepto. En Play+ valoramos tu privacidad y seguridad; por tanto, no se requiere ningún registro, correo electrónico o métodos de pago.</p>
+                        <p>Play+ funciona de manera altruista. El reproductor recopila enlaces y directorios de servidores de alojamiento de código público y los procesa de forma nativa sin generar costos de almacenamiento propios, permitiéndonos ofrecer un catálogo enfocado únicamente en cine de libre acceso y sin anuncios.</p>
                     </div>
                 </div>
 
                 <!-- FAQ 4 -->
                 <div class="faq-item">
                     <button class="faq-header" onclick="toggleFaq(this)">
-                        <span>¿Es compatible con Smart TV?</span>
+                        <span>¿Debo registrarme o ingresar tarjetas?</span>
                         <span>▼</span>
                     </button>
                     <div class="faq-body">
-                        <p>Sí. La app es compatible con dispositivos TV Box, Fire TV Stick y televisores inteligentes que cuenten con el sistema operativo Android TV. También puedes enviar contenido mediante la función de transmisión de tu móvil.</p>
+                        <p>Nunca. Creemos firmemente en el derecho a la privacidad. No se requiere ningún tipo de registro personal, correo electrónico o métodos de pago para usar todas las funciones de la aplicación y ver películas.</p>
                     </div>
                 </div>
             </div>
@@ -1079,13 +1395,19 @@
     <!-- Descarga Final -->
     <section class="banner-final">
         <div class="container banner-final-content">
-            <h2>Comienza a disfrutar ahora mismo</h2>
-            <p>Accede al catálogo de cine y series más grande sin anuncios molestos e interrupciones en tu dispositivo móvil o televisor.</p>
+            <h2>¿Listo para comenzar a disfrutar?</h2>
+            <p>El mayor catálogo de películas está ahora a tu alcance, libre de comerciales invasivos y totalmente seguro de usar en tu dispositivo o TV.</p>
             
-            <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                <span>Descargar Play+ 6.1 (Gratis)</span>
-            </a>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <a href="https://huggingface.co/tntprojects/archivos/resolve/main/Play%2B_6.1.apk" class="btn-large">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    <span>Descargar Play+ APK 6.1 (Gratis)</span>
+                </a>
+                
+                <p style="font-size: 14px; color: var(--text-muted);">
+                    O instálalo en tu Smart TV con el código Downloader: <strong style="color: #60a5fa; font-family: monospace;">6288220</strong>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1097,7 +1419,13 @@
                 <span>Plataforma de descarga activa</span>
             </div>
             <p class="footer-text">© 2026 Play+. Todos los derechos reservados.</p>
-            <p class="footer-disc">Exención de responsabilidad: Play+ no aloja ni almacena películas con derechos de autor en sus servidores. Es un reproductor inteligente que indexa y enlaza enlaces disponibles públicamente en la web.</p>
+            <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+                <a href="https://t.me/PlayGoPedidos" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;" class="hover:text-white">Telegram de Pedidos</a> •
+                <a href="https://whatsapp.com/channel/0029VaSTj8i6xCSUcChevG3b" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;" class="hover:text-white">Canal de WhatsApp</a> •
+                <a href="https://youtube.com/@tntprojects26?si=4Tnc-rwD2R59qIK8" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;" class="hover:text-white">Canal de YouTube</a> •
+                <a href="https://mast.lat/@tntprojects" target="_blank" rel="noopener" style="color: var(--text-muted); text-decoration: none;" class="hover:text-white">Mastodon</a>
+            </div>
+            <p class="footer-disc">Exención de responsabilidad: Play+ no aloja ni almacena contenido protegido por copyright en su infraestructura. Funciona únicamente como un buscador y organizador inteligente que enlaza con servidores públicos de libre acceso en internet.</p>
         </div>
     </footer>
 
