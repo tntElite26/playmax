@@ -23,6 +23,11 @@
             --tv-bg: rgba(59, 130, 246, 0.08);
             --tv-border: rgba(59, 130, 246, 0.25);
             
+            /* Notificaciones */
+            --notif-purple: #a855f7;
+            --notif-bg: rgba(168, 85, 247, 0.08);
+            --notif-border: rgba(168, 85, 247, 0.25);
+            
             /* Colores de marca para Canales Oficiales */
             --telegram: #0088cc;
             --whatsapp: #25d366;
@@ -209,13 +214,13 @@
             max-width: 540px;
         }
 
-        /* Banner de Promesa de Servicio Modernizado (Mensaje del Creador) */
+        /* Banner de Promesa de Servicio */
         .service-promise {
             background: linear-gradient(135deg, rgba(255, 42, 95, 0.07) 0%, rgba(255, 126, 64, 0.04) 100%);
             border: 1px solid rgba(255, 42, 95, 0.2);
             border-radius: 18px;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             display: flex;
             gap: 18px;
             align-items: center;
@@ -253,6 +258,77 @@
         .promise-text strong {
             color: #ff5e84;
             font-weight: 700;
+        }
+
+        /* Banner de Aviso de Seguridad */
+        .security-notice {
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 14px;
+            padding: 16px;
+            margin-top: 10px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .security-notice-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .security-notice-text h4 {
+            color: var(--warning);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .security-notice-text p {
+            font-size: 12.5px;
+            color: #e4e4e7;
+            line-height: 1.4;
+        }
+
+        /* Banner de Alerta para Activar Notificaciones */
+        .notification-alert {
+            background: var(--notif-bg);
+            border: 1px solid var(--notif-border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 28px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            max-width: 540px;
+            box-shadow: 0 8px 24px -10px rgba(168, 85, 247, 0.15);
+        }
+
+        .notification-alert-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            line-height: 1;
+            animation: ringBell 2.5s ease infinite;
+        }
+
+        @keyframes ringBell {
+            0%, 100% { transform: rotate(0); }
+            10%, 30% { transform: rotate(15deg); }
+            20%, 40% { transform: rotate(-15deg); }
+            50% { transform: rotate(0); }
+        }
+
+        .notification-alert-text h4 {
+            color: var(--notif-purple);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .notification-alert-text p {
+            font-size: 12.5px;
+            color: #e4e4e7;
+            line-height: 1.45;
         }
 
         /* Contenedor de Opciones de Descarga */
@@ -323,13 +399,13 @@
             box-shadow: 0 6px 25px rgba(255, 42, 95, 0.5);
         }
 
-        /* Caja de Downloader para TV */
+        /* Caja de Downloader para TV - Rediseñada */
         .tv-download-box {
-            background: rgba(18, 18, 21, 0.8);
+            background: rgba(18, 18, 21, 0.95);
             border: 1px solid var(--tv-border);
             border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             position: relative;
             overflow: hidden;
         }
@@ -339,9 +415,9 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -383,31 +459,156 @@
             margin-top: 4px;
         }
 
+        /* Caja de Código TV Ultra Llamativa */
         .code-display {
-            background: #1e1e24;
-            border: 2px dashed #3b82f6;
-            border-radius: 12px;
-            padding: 12px 20px;
+            background: linear-gradient(135deg, #1e1e24 0%, #0d0d11 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 14px;
+            padding: 12px 16px;
             text-align: center;
-            min-width: 140px;
+            min-width: 160px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+            animation: pulseGlow 3s infinite alternate;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                border-color: #3b82f6;
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+            }
+            100% {
+                border-color: #60a5fa;
+                box-shadow: 0 0 25px rgba(96, 165, 250, 0.4);
+            }
+        }
+
+        .code-display:hover {
+            transform: translateY(-2px);
         }
 
         .code-display span {
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
             color: #93c5fd;
-            font-weight: 700;
+            font-weight: 800;
             display: block;
-            margin-bottom: 2px;
-            letter-spacing: 1px;
+            margin-bottom: 4px;
+            letter-spacing: 1.5px;
         }
 
         .code-number {
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 26px;
+            font-weight: 900;
             color: #ffffff;
-            letter-spacing: 2px;
-            font-family: monospace;
+            letter-spacing: 3px;
+            font-family: monospace, sans-serif;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        /* Botón de Copiar Integrado */
+        .btn-copy {
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-copy:hover {
+            background: #3b82f6;
+            color: #ffffff;
+            border-color: #3b82f6;
+        }
+
+        .btn-copy svg {
+            transition: transform 0.2s;
+        }
+
+        .btn-copy:active svg {
+            transform: scale(0.85);
+        }
+
+        /* Caja de Descarga Opcional MX Player */
+        .mx-download-box {
+            background: rgba(24, 24, 27, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .mx-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mx-info {
+            text-align: left;
+        }
+
+        .mx-info .mx-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .mx-info h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .mx-info p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: #18181b;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            transform: translateY(-2px);
         }
 
         /* Estadísticas rápidas */
@@ -514,36 +715,6 @@
             text-align: right;
             font-weight: 600;
             color: var(--text-main);
-        }
-
-        /* Banner de Aviso de Seguridad */
-        .security-notice {
-            background-color: var(--warning-bg);
-            border: 1px solid var(--warning-border);
-            border-radius: 14px;
-            padding: 16px;
-            margin-top: 10px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .security-notice-icon {
-            font-size: 20px;
-            line-height: 1;
-        }
-
-        .security-notice-text h4 {
-            color: var(--warning);
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .security-notice-text p {
-            font-size: 12.5px;
-            color: #e4e4e7;
-            line-height: 1.4;
         }
 
         .trust-checklist {
@@ -1008,8 +1179,8 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .service-promise {
-                margin: 0 auto 24px;
+            .service-promise, .notification-alert {
+                margin: 0 auto 20px;
             }
             .download-container {
                 margin: 0 auto;
@@ -1047,10 +1218,14 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .mx-flex {
+                flex-direction: column;
+                text-align: center;
+            }
             .code-display {
                 width: 100%;
             }
-            .btn-large {
+            .btn-large, .btn-secondary {
                 width: 100%;
                 justify-content: center;
             }
@@ -1105,12 +1280,21 @@
                     Disfruta de todas tus películas favoritas en streaming con Play+. Un reproductor fluido diseñado para brindarte el contenido cinematográfico en la más alta resolución posible, sin anuncios intrusivos y totalmente libre de suscripciones de pago.
                 </p>
 
-                <!-- Caja de Promesa de Servicio con el Mensaje Optimizado -->
+                <!-- Caja de Promesa de Servicio -->
                 <div class="service-promise">
                     <span class="promise-icon">😎🍿</span>
                     <p class="promise-text">
                         <strong>¡Tú pides, nosotros nos encargamos del resto!</strong> Buscamos cualquier película que quieras en español latino y con la más alta resolución, alojándola en nuestros servidores optimizados de ultra velocidad para que disfrutes de una reproducción instantánea, fluida y sin límites directamente en la app.
                     </p>
+                </div>
+
+                <!-- Banner Importante para Activar Notificaciones -->
+                <div class="notification-alert">
+                    <div class="notification-alert-icon">🔔</div>
+                    <div class="notification-alert-text">
+                        <h4>¡Aviso Importante de Novedades!</h4>
+                        <p>No olvides activar las notificaciones en tu celular o TV para enterarte al instante cuando subamos nuevo contenido solicitado o publiquemos avisos importantes del sistema.</p>
+                    </div>
                 </div>
 
                 <!-- Contenedor de Opciones de Descarga -->
@@ -1142,10 +1326,33 @@
                                 <p>Abre la aplicación Downloader en tu TV e ingresa el código numérico al lado para iniciar la transferencia rápida.</p>
                             </div>
                             
+                            <!-- Caja de código interactiva y rediseñada -->
                             <div class="code-display">
                                 <span>CÓDIGO TV</span>
-                                <div class="code-number">8216773</div>
+                                <div class="code-number" id="tv-code-val">8216773</div>
+                                <button class="btn-copy" onclick="copiarCodigo()" aria-label="Copiar código de televisión">
+                                    <!-- Icono Copiar SVG -->
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span>Copiar</span>
+                                </button>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Opción Adicional: Descargar MX Player -->
+                    <div class="mx-download-box">
+                        <div class="mx-flex">
+                            <div class="mx-info">
+                                <span class="mx-badge">🎬 REPRODUCTOR RECOMENDADO (OPCIONAL)</span>
+                                <h4>MX Player para Android</h4>
+                                <p>Recomendado para reproducir películas de forma externa con la mayor fluidez, soporte de pistas de audio y subtítulos avanzados.</p>
+                            </div>
+                            
+                            <a href="https://mx-player.uptodown.com/android" target="_blank" rel="noopener" class="btn-secondary">
+                                <!-- Icono Descarga -->
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                                <span>Descargar MX</span>
+                            </a>
                         </div>
                     </div>
 
@@ -1499,6 +1706,71 @@
                 icon.style.transform = 'rotate(180deg)';
                 icon.style.transition = 'transform 0.2s';
             }
+        }
+
+        // Función para copiar código de TV al portapapeles de forma segura (Compatible con sandbox)
+        function copiarCodigo() {
+            const codigo = '8216773';
+            const inputTemporal = document.createElement('input');
+            inputTemporal.value = codigo;
+            document.body.appendChild(inputTemporal);
+            inputTemporal.select();
+            inputTemporal.setSelectionRange(0, 99999); // Compatible con dispositivos móviles
+
+            try {
+                // Utiliza document.execCommand para cumplir las restricciones del iframe de vista previa
+                const copiado = document.execCommand('copy');
+                if (copiado) {
+                    mostrarToast('📋 ¡Código de TV copiado con éxito!');
+                } else {
+                    mostrarToast('❌ Ocurrió un problema al copiar');
+                }
+            } catch (err) {
+                console.error('Error al copiar el código:', err);
+                mostrarToast('❌ Dispositivo no compatible con copiado automático');
+            }
+            document.body.removeChild(inputTemporal);
+        }
+
+        // Sistema de notificaciones (Toast) personalizado sin usar alerts molestos
+        function mostrarToast(mensaje) {
+            let toast = document.getElementById('custom-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'custom-toast';
+                // Estilos inline para asegurar su correcto renderizado sin interferir con el CSS principal
+                Object.assign(toast.style, {
+                    position: 'fixed',
+                    bottom: '32px',
+                    right: '32px',
+                    backgroundColor: '#10b981',
+                    color: '#ffffff',
+                    padding: '14px 28px',
+                    borderRadius: '12px',
+                    fontWeight: '700',
+                    fontSize: '14px',
+                    boxShadow: '0 10px 25px -5px rgba(16, 185, 129, 0.4)',
+                    zIndex: '99999',
+                    opacity: '0',
+                    transform: 'translateY(15px)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                });
+                document.body.appendChild(toast);
+            }
+
+            toast.textContent = mensaje;
+            // Forzar reflow para reiniciar transición
+            toast.offsetHeight;
+            
+            // Animación de entrada
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+
+            // Desaparecer después de 2.5 segundos
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(15px)';
+            }, 2500);
         }
     </script>
 </body>
