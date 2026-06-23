@@ -149,7 +149,7 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 48px;
             align-items: start;
         }
@@ -205,8 +205,54 @@
         .hero-desc {
             font-size: 17px;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             max-width: 540px;
+        }
+
+        /* Banner de Promesa de Servicio Modernizado (Mensaje del Creador) */
+        .service-promise {
+            background: linear-gradient(135deg, rgba(255, 42, 95, 0.07) 0%, rgba(255, 126, 64, 0.04) 100%);
+            border: 1px solid rgba(255, 42, 95, 0.2);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            max-width: 540px;
+            box-shadow: 0 10px 30px -10px rgba(255, 42, 95, 0.1);
+            position: relative;
+        }
+
+        .service-promise::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(255, 42, 95, 0.4) 0%, rgba(255, 126, 64, 0) 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .promise-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+            line-height: 1;
+            filter: drop-shadow(0 4px 10px rgba(255, 42, 95, 0.2));
+        }
+
+        .promise-text {
+            font-size: 14px;
+            color: #f4f4f5;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        .promise-text strong {
+            color: #ff5e84;
+            font-weight: 700;
         }
 
         /* Contenedor de Opciones de Descarga */
@@ -962,6 +1008,9 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            .service-promise {
+                margin: 0 auto 24px;
+            }
             .download-container {
                 margin: 0 auto;
             }
@@ -1055,6 +1104,14 @@
                 <p class="hero-desc">
                     Disfruta de todas tus películas favoritas en streaming con Play+. Un reproductor fluido diseñado para brindarte el contenido cinematográfico en la más alta resolución posible, sin anuncios intrusivos y totalmente libre de suscripciones de pago.
                 </p>
+
+                <!-- Caja de Promesa de Servicio con el Mensaje Optimizado -->
+                <div class="service-promise">
+                    <span class="promise-icon">😎🍿</span>
+                    <p class="promise-text">
+                        <strong>¡Tú pides, nosotros nos encargamos del resto!</strong> Buscamos cualquier película que quieras en español latino y con la más alta resolución, alojándola en nuestros servidores optimizados de ultra velocidad para que disfrutes de una reproducción instantánea, fluida y sin límites directamente en la app.
+                    </p>
+                </div>
 
                 <!-- Contenedor de Opciones de Descarga -->
                 <div class="download-container">
@@ -1225,7 +1282,7 @@
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .33z"/></svg>
                     </div>
                     <h3>Canal de Pedidos</h3>
-                    <p>Pide tus películas favoritas y recíbelas agregadas al reproductor de forma prioritaria.</p>
+                    <p>Buscamos por ti las películas que quieras en español latino, en máxima definición, y las subimos a nuestros servidores.</p>
                     <div class="btn-social-action">Pedir Película</div>
                 </a>
 
